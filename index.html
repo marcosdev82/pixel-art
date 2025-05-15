@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pixel Art com Canvas</title>
+    <style>
+      canvas {
+        border: 2px solid #333;
+        image-rendering: pixelated; /* garante o visual pixelado */
+      }
+    </style>
+  </head>
+  <body>
+    <h2>🎨 Desenho Pixelado em JavaScript</h2>
+    <canvas id="pixelCanvas" width="160" height="160"></canvas>
+
+    <script>
+      const canvas = document.getElementById("pixelCanvas");
+      const ctx = canvas.getContext("2d");
+
+      // Tamanho de cada "pixel"
+      const pixelSize = 20;
+
+      // "Mapa" do desenho - 8x8 pixels
+      // 0 = vazio, 1 = amarelo (rosto), 2 = preto (olho/boca)
+      const pixelArt = [
+        [0, 0, 1, 1, 1, 1, 0, 0],
+        [0, 1, 1, 1, 1, 1, 1, 0],
+        [1, 1, 2, 1, 1, 2, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 2, 2, 1, 1, 1],
+        [1, 1, 2, 1, 1, 2, 1, 1],
+        [0, 1, 1, 1, 1, 1, 1, 0],
+        [0, 0, 1, 1, 1, 1, 0, 0],
+      ];
+
+      // Cores
+      const colors = {
+        0: "#ffffff", // branco (fundo)
+        1: "#fcd12a", // amarelo (rosto)
+        2: "#000000", // preto (olhos/boca)
+      };
+
+      // Desenha o pixel art
+      for (let y = 0; y < pixelArt.length; y++) {
+        for (let x = 0; x < pixelArt[y].length; x++) {
+          const pixel = pixelArt[y][x];
+          ctx.fillStyle = colors[pixel];
+          ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+        }
+      }
+    </script>
+  </body>
+</html>

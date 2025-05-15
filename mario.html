@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mario em Pixel Art</title>
+    <style>
+      canvas {
+        border: 2px solid #000;
+        background-color: #87ceeb; /* Céu */
+        image-rendering: pixelated;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Mario em Pixel Art</h1>
+    <canvas id="mario" width="160" height="160"></canvas>
+
+    <script>
+      const canvas = document.getElementById("mario");
+      const ctx = canvas.getContext("2d");
+
+      const pixelSize = 10;
+
+      // Matriz com o desenho do Mario (16x16)
+      const marioPixels = [
+        ["", "", "", "", "", "", "r", "r", "r", "r", "", "", "", "", "", ""],
+        ["", "", "", "", "", "r", "r", "r", "r", "r", "r", "r", "", "", "", ""],
+        [
+          "",
+          "",
+          "",
+          "",
+          "y",
+          "y",
+          "y",
+          "b",
+          "b",
+          "y",
+          "y",
+          "y",
+          "",
+          "",
+          "",
+          "",
+        ],
+        [
+          "",
+          "",
+          "",
+          "y",
+          "y",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "y",
+          "y",
+          "y",
+          "",
+          "",
+          "",
+        ],
+        [
+          "",
+          "",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "",
+          "",
+          "",
+        ],
+        [
+          "",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "",
+          "",
+        ],
+        [
+          "r",
+          "r",
+          "r",
+          "b",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "b",
+          "r",
+          "r",
+          "r",
+          "",
+        ],
+        [
+          "r",
+          "r",
+          "r",
+          "b",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "b",
+          "r",
+          "r",
+          "r",
+          "",
+        ],
+        [
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "r",
+          "",
+        ],
+        [
+          "",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "",
+          "",
+        ],
+        [
+          "",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "b",
+          "",
+          "",
+        ],
+        ["", "", "r", "r", "", "", "", "", "", "", "", "r", "r", "", "", ""],
+        ["", "r", "r", "", "", "", "", "", "", "", "", "", "r", "r", "", ""],
+        ["r", "r", "", "", "", "", "", "", "", "", "", "", "", "r", "r", ""],
+        ["b", "b", "", "", "", "", "", "", "", "", "", "", "", "b", "b", ""],
+        ["b", "b", "", "", "", "", "", "", "", "", "", "", "", "b", "b", ""],
+      ];
+
+      const colors = {
+        r: "#cc0000", // vermelho
+        b: "#000000", // preto (bigode, sapato)
+        y: "#fce883", // amarelo (rosto)
+      };
+
+      function drawPixelArt() {
+        for (let y = 0; y < marioPixels.length; y++) {
+          for (let x = 0; x < marioPixels[y].length; x++) {
+            const pixel = marioPixels[y][x];
+            if (pixel !== "") {
+              ctx.fillStyle = colors[pixel];
+              ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+            }
+          }
+        }
+      }
+
+      drawPixelArt();
+    </script>
+  </body>
+</html>
